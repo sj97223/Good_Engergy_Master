@@ -8,12 +8,5 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, (process as any).cwd(), '');
   return {
     plugins: [react()],
-    define: {
-      // Properly inject process.env.API_KEY for the Google GenAI SDK
-      'process.env.API_KEY': JSON.stringify(env.API_KEY),
-      'process.env.VITE_MIMO_KEY': JSON.stringify(env.VITE_MIMO_KEY),
-      'process.env.VITE_MIMO_BASE_URL': JSON.stringify(env.VITE_MIMO_BASE_URL),
-      // Also inject VITE_ vars if needed explicitly (though Vite does this automatically for import.meta.env)
-    }
   };
 })

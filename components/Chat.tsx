@@ -11,8 +11,8 @@ import HistorySidebar from './HistorySidebar';
 const DEFAULT_SETTINGS: AppSettings = {
   provider: 'gemini',
   geminiKey: '',
-  mimoKey: process.env.VITE_MIMO_KEY || '',
-  mimoBaseUrl: process.env.VITE_MIMO_BASE_URL || 'https://api.openai.com/v1',
+  mimoKey: import.meta.env.VITE_MIMO_KEY || '',
+  mimoBaseUrl: import.meta.env.VITE_MIMO_BASE_URL || 'https://api.openai.com/v1',
   modelName: '',
   useCmdEnter: false
 };
@@ -46,7 +46,8 @@ const Chat: React.FC = () => {
 
   // Check for API Keys on mount
   useEffect(() => {
-    const hasEnvKey = !!process.env.API_KEY;
+    // Backend handles API Key, so we assume it's configured
+    const hasEnvKey = true; 
     const hasSettingsKey = settings.provider === 'gemini' ? !!settings.geminiKey : !!settings.mimoKey;
     
     if (!hasEnvKey && !hasSettingsKey) {
@@ -207,7 +208,7 @@ const Chat: React.FC = () => {
               <button 
                 onClick={() => setIsSettingsOpen(true)}
                 className={`p-2 rounded-xl transition-all ${
-                  (!settings.geminiKey && !process.env.API_KEY && !settings.mimoKey) 
+                  (!settings.geminiKey && false && !settings.mimoKey) 
                     ? 'text-red-500 bg-red-50 animate-pulse ring-2 ring-red-200' 
                     : 'text-gray-400 hover:text-primary hover:bg-orange-50'
                 }`}
@@ -234,12 +235,12 @@ const Chat: React.FC = () => {
                 <div className="text-center space-y-2">
                   <p className="text-lg font-black text-gray-700">Hi, 这里是你的烦恼粉碎机</p>
                   <p className="text-sm max-w-xs mx-auto text-gray-400 leading-relaxed font-medium">
-                    {(!settings.geminiKey && !process.env.API_KEY && !settings.mimoKey)
+                    {(!settings.geminiKey && false && !settings.mimoKey)
                       ? "👋 请先点击右上角设置图标，配置 API Key 开始使用。"
                       : "输入你现在的焦虑、压力或难题，我们将用最硬核的正能量帮你拆解它。"}
                   </p>
                 </div>
-                {(!settings.geminiKey && !process.env.API_KEY && !settings.mimoKey) ? (
+                {(!settings.geminiKey && false && !settings.mimoKey) ? (
                    <button 
                      onClick={() => setIsSettingsOpen(true)}
                      className="px-6 py-2 bg-primary text-white font-bold rounded-xl shadow-lg animate-bounce"

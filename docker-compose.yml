@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3030:3030"
+    environment:
+      - API_KEY=${gemini_key}
+      - MIMO_API_KEY=${mimo_api_key}
+      - MIMO_BASE_URL=${MIMO_BASE_URL:-https://api.xiaomimimo.com/v1}
+      - API_MODEL=${API_MODEL:-mimo-v2-flash}
+    restart: always

@@ -109,7 +109,7 @@ const ResponseCard: React.FC<Props> = ({ data, messageIndex }) => {
                   内在闪光点
                 </h4>
                 <ul className="space-y-2">
-                  {data.bright_spots.map((spot, i) => (
+                  {data.bright_spots?.map((spot, i) => (
                     <li key={i} className="text-xs text-gray-600 flex items-start gap-2 leading-relaxed">
                       <span className="text-amber-400 font-bold">•</span>
                       {spot}
@@ -141,7 +141,7 @@ const ResponseCard: React.FC<Props> = ({ data, messageIndex }) => {
                 行动清单 ACTION LIST
               </h4>
               <div className="space-y-2.5">
-                {data.checklist.map((item, i) => (
+                {data.checklist?.map((item, i) => (
                   <div 
                     key={i} 
                     onClick={() => toggleCheck(i)}
