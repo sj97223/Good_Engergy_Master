@@ -40,13 +40,13 @@ Create a `.env` file in the project root (based on `.env.example`):
 
 **Option 1: Using Xiaomi MiMo (Recommended)**
 ```bash
-MIMO_API_KEY=your_mimo_key_here
+mimo_api_key=your_mimo_key_here
 MIMO_BASE_URL=https://api.xiaomimimo.com/v1
 ```
 
 **Option 2: Using Google Gemini**
 ```bash
-API_KEY=your_gemini_key_here
+gemini_key=your_gemini_key_here
 ```
 
 ## 5. Architecture
