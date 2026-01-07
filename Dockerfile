@@ -2,6 +2,7 @@
 FROM node:18-alpine as frontend-builder
 WORKDIR /app
 COPY package.json ./
+RUN npm config set registry https://registry.npmmirror.com
 RUN npm install
 COPY . .
 RUN npm run build
@@ -12,6 +13,7 @@ WORKDIR /app
 
 # Install backend dependencies
 COPY server/package.json ./
+RUN npm config set registry https://registry.npmmirror.com
 RUN npm install --production
 
 # Copy backend source
